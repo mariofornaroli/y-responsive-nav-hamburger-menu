@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open-Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #e0e0e0;
+    background: url(./images/img.PNG);
+    background-position: center 90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+header {
+    position: fixed;
+    background-color: #20252b;
+    color: #e0e0e0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+}
+
+header h1 {
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+
+.menu {
+    display: flex;
+}
+
+#menuCheck,
+.menu-icon {
+    display: none;
+}
+
+#menuCheck {
+    width: 0;
+    height: 0;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+}
+
+.menu-list li {
+    display: inline-block;
+    margin-right: 32px;
+    cursor: pointer;
+    transition: color   0.3s;
+}
+
+.menu-list li:hover {
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+
+    header {
+        background-color: transparent;
+        color: #20252b;
+        padding-right: 16px;
+    }
+
+    header::before {
+        content: "";
+        position: fixed;
+        top: -100px;
+        right: -100px;
+        width: 200px;
+        height: 200px;
+        background-color: #20252b;
+        border-radius: 50%;
+    }
+
+    #menuCheck,
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-icon {
+        color: #fff;
+        position: relative;
+        z-index: 2;
+    }
+
+    .menu-list {
+        position: fixed;
+        background-color: #20252b;
+        color: #fff;
+
+        top: -100%;
+        left: 100%;
+        width: 150vh;
+        height: 150vh;
+        border-radius: 50%;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: top 0.4s, left 0.4s, transform 0.4s;
+    }
+
+    #menuCheck:checked~ .menu-list {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .menu-list li {
+        text-transform: uppercase;
+        font-size: 1.5em;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    #menuCheck:checked~.menu-list li {
+        opacity: 1;
+    }
+
+    .menu-icon {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        font-size: 1.4em;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #menuCheck:checked~.menu-icon {
+        border: 2px solid #fff;
+    }
+
+    label .fa-bars,
+    #menuCheck:checked~label .fa-times {
+        display: block;
+    }
+
+    label .fa-times,
+    #menuCheck:checked~label .fa-bars {
+        display: none;
+    }
+
+
+}
